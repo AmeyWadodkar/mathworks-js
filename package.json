@@ -1,0 +1,33 @@
+{
+  "name": "mathworks-js",
+  "version": "1.0.0",
+  "description": "Class files for MathWorks Intro to JS course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/speedingplanet/mathworks-js.git"
+  },
+  "author": "John Paxton <pax@speedingplanet.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/speedingplanet/mathworks-js/issues"
+  },
+  "homepage": "https://github.com/speedingplanet/mathworks-js#readme",
+  "dependencies": {
+    "@speedingplanet/rest-server": "0.0.5",
+    "bootstrap": "^4.5.0",
+    "lodash": "^4.17.15",
+    "lodash-es": "^4.17.15"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "babel-jest": "^26.0.1",
+    "jest": "^26.0.1",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
+  }
+}

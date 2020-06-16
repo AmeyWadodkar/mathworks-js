@@ -52,13 +52,19 @@ names.some((name) => name.length === 2);
 
 // Every iteration of the predicate must return true
 // Otherwise returns false overall
-names.every((name) => {
-  return true;
+names.every(name => {
+  if (name.length > 2) {
+    return true;
+  }
+
 });
 
 let plusFive = numbers.map(number => number + 5);
 
+let plusFiveOdd = numbers.filter(number => number % 2).map(number => number + 5);
+
 let isFound = names.includes('Tim');
+isFound = names.indexOf('Tim') > -1;
 let position = names.indexOf('Tim'); // -1 if not found
 
 let foundElement = names.find(name => {
@@ -68,4 +74,35 @@ let foundElement = names.find(name => {
 
 let filteredNames = names.filter(name => {
   return name.length > 3;
-})
+});
+
+// slice(start, end) (end is not inclusive)
+const firstThree = numbers.slice(0, 3);
+//array.splice(pos, length, replace?)
+
+// Delete
+const deletedElements = names.splice(2, 1);
+
+// Insert
+const empty = names.splice(3, 0, 'Anthony');
+
+// Replace
+const replaced = names.splice(3, 2, 'Oscar', 'Jennifer');
+
+// Operate on the front of a list
+const firstName = names.shift();
+
+// Put it back
+names.unshift(firstName);
+names.unshift('Alex', 'Alicia', 'Amey');
+
+// Operate on the end of a list
+const lastName = names.pop();
+
+// Put it back
+names.push(lastName);
+
+// Destructuring
+let [firstName, secondName, thirdName] = names;
+
+let [firstName, secondName, thirdName, ...restOfNames] = names;

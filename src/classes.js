@@ -1,6 +1,6 @@
 const privateFields = ['color'];
 
-class Car {
+export default class Car {
   mileage = 0;
   speed = 0;
 
@@ -21,7 +21,10 @@ class Car {
 
     // console.log('keys? ', Object.keys(this));
     // console.log('props?', Object.getOwnPropertyNames(Object.getPrototypeOf(this)));
+
+    // Object.preventExtensions
     Object.seal(this);
+    // Object.freeze
 
     // Object.assign(destination, one, two, three....)
     Object.assign(this, config);
@@ -51,7 +54,7 @@ class Car {
   }
 }
 
-// let honda = new Car({ color: 'blue', mileage: 50000, firstName: 'John', toString: () => 'Overridden toString()' });
+let honda = new Car({ color: 'blue', mileage: 50000, firstName: 'John', toString: () => 'Overridden toString()' });
 /* 
 let honda = new Car({
   color: 'blue',
@@ -59,4 +62,4 @@ let honda = new Car({
   toString: () => 'Overridden toString()',
 });
  */
-let honda = new Car({ color: 'blue', mileage: 50000 });
+// let honda = new Car({ color: 'blue', mileage: 50000 });

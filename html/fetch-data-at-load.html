@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetching data at page load</title>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const el = document.getElementById('user-count');
+        console.log('el is ', el);
+
+        const url = 'http://localhost:8000/api/zippay/v1/users';
+        const responsePromise = fetch(url);
+        responsePromise
+          .then((response) => {
+            if (response.ok) {
+              // response.status between 200-299
+              return response.json();
+            } else {
+              return Promise.reject({
+                message: 'Bad response',
+                status: response.status,
+              });
+            }
+          })
+          .then((users) => {
+            console.log('There are ', users.length, 'users');
+            const span = document.getElementById('user-count');
+            span.innerHTML = users.length;
+          })
+          .catch((error) => console.error(error));
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Fetching data at page load time</h1>
+    <p>There are <span id="user-count">an unknown number of</span> users</p>
+  </body>
+</html>

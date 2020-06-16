@@ -1,21 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fetching data</title>
-</head>
-<body>
-  <h1>Fetching data</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetching data</title>
+  </head>
+  <body>
+    <h1>Fetching data</h1>
 
-  <button id="fetch-button" type="button">Fetch data</button>
+    <button id="fetch-button" type="button">Fetch data</button>
 
-  <script>
-    const url = 'http://localhost:8000/api/zippay/v1/users';
-    const fetchButton = document.getElementById('fetch-button');
-    fetchButton.addEventListener('click', (event) => {
-      console.log('You clicked on the button', event);
-    })
-  </script>
-</body>
+    <script>
+      const url = 'http://localhost:8000/api/zippay/v1/users';
+      const fetchButton = document.getElementById('fetch-button');
+      fetchButton.addEventListener('click', (event) => {
+        console.log('You clicked on the button', event);
+
+        const responsePromise = fetch(url);
+        responsePromise
+          .then((response) => {
+            if (response.ok) {
+              // response.status between 200-299
+              return response.json();
+            } else {
+              return Promise.reject({
+                message: 'Bad response',
+                status: response.status,
+              });
+            }
+          })
+          .then((users) => {
+            console.log('There are ', users.length, 'users');
+          })
+          .catch((error) => console.error(error));
+      });
+    </script>
+  </body>
 </html>

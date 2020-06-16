@@ -59,3 +59,31 @@ const promiseValue = promiseFetch.then(response => {
 const promiseValue = fetch(someUrl).then((response) => {
   const person = response.data.person;
 });
+
+somePromise
+  .then((value) => {
+    // Value is 10
+    // return value;
+    // return null;
+    //
+    // throw new Error('PROBLEMS!');
+    // return Promise.reject({ message: 'whatever' });
+  })
+  .then(
+    (success) => console.log('Success: ', success),
+    (error) => console.error('Error: ', error),
+  );
+
+otherPromise
+  .catch((error) => {
+    // return Promise.reject({ message: 'error', error: error });
+
+    // return 10;
+
+    // return nothing
+    
+  })
+  .then(
+    (success) => console.log('Success: ', success),
+    (error) => console.error('Error: ', error),
+  );

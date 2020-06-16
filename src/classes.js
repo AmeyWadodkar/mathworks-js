@@ -19,8 +19,8 @@ export default class Car {
       }
     });
 
-    // console.log('keys? ', Object.keys(this));
-    // console.log('props?', Object.getOwnPropertyNames(Object.getPrototypeOf(this)));
+    console.log('keys? ', Object.keys(this));
+    console.log('methods?', Object.getOwnPropertyNames(Object.getPrototypeOf(this)));
 
     // Object.preventExtensions
     Object.seal(this);

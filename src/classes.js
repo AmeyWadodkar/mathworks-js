@@ -1,3 +1,5 @@
+import idMixin from './id-mixin.js';
+
 const privateFields = ['color'];
 
 export default class Car {
@@ -21,6 +23,9 @@ export default class Car {
 
     console.log('keys? ', Object.keys(this));
     console.log('methods?', Object.getOwnPropertyNames(Object.getPrototypeOf(this)));
+
+    // Mixins before sealing
+    Object.assign(this, idMixin);
 
     // Object.preventExtensions
     Object.seal(this);

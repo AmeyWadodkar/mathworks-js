@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign-in sheet</title>
+  </head>
+  <body>
+    <h1>Sign-in sheet</h1>
+    <h2>Please sign in below:</h2>
+
+    <section id="form-container">
+      <form>
+        <label for="student-name">Your name: </label>
+        <input type="text" id="student-name" /> <br />
+        <button type="button" id="sign-in-button">Sign in</button>
+      </form>
+    </section>
+    <section id="sign-in-container">
+      <h3>Students</h3>
+      <ul id="students"></ul>
+    </section>
+
+    <script>
+      const button = document.getElementById('sign-in-button');
+      const textField = document.getElementById('student-name');
+      const studentList = document.getElementById('students');
+
+      button.addEventListener('click', (event) => {
+        let studentName = textField.value;
+        const item2 = document.createElement('li');
+        item2.textContent = studentName;
+        studentList.append(item2); // afterbegin
+      });
+    </script>
+  </body>
+</html>

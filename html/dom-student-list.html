@@ -33,6 +33,7 @@
       const button = document.getElementById('sign-in-button');
       const textField = document.getElementById('student-name');
       const studentList = document.getElementById('students');
+      const studentListContainer = studentList.parentNode;
 
       // Property-based event handling
       // button.onclick = (event) => {}
@@ -40,20 +41,52 @@
       button.addEventListener('click', (event) => {
         let studentName = textField.value;
 
-
         // Most backwards-compatible
         // const item = document.createElement('li');
         // const textNode = document.createTextNode(studentName);
-        // item.appendChild(textNode);        
+        // item.appendChild(textNode);
         // studentList.appendChild(item);
 
         // studentList.innerHTML = studentList.innerHTML + `<li>${studentName}</li>`;
 
         // Least backwards-compatible, more efficient, often easier
-        studentList.insertAdjacentHTML('beforeend', `<li>${studentName}</li>`);
-        // const item2 = document.createElement('li');
-        // item2.textContent = studentName
-        // studentList.append(item2);
+        // beforebegin, beforeend, afterbegin, afterend
+        /*
+
+          beforebegin (older/previous sibling)
+          |-------------------------------|
+          | afterbegin (first child)      |
+          |                               |
+          | existing child elements       |
+          | existing child elements       |
+          | existing child elements       |
+          | existing child elements       |
+          | existing child elements       |
+          |                               |
+          | beforeend (last child)        |
+          |-------------------------------|
+          afterend (younger/following sibling)
+
+        */
+        // studentList.insertAdjacentHTML('beforebegin', `<li>${studentName}</li>`);
+
+        const item2 = document.createElement('li');
+        item2.textContent = studentName;
+        studentList.append(item2); // afterbegin
+
+        // Duplicate an element
+        /*
+        setTimeout(() => {
+          const clonedElement = item2.cloneNode();
+          clonedElement.textContent = 'Gaurav';
+          button.insertAdjacentElement('beforebegin', clonedElement);
+        }, 3000);
+        */
+
+        // studentList.prepend(item2); // beforeend
+        // studentList.before(item2); // beforebegin
+        // studentList.after(item2); // afterend
+
         // OR
         // studentList.insertAdjacentElement('beforeend', item2);
       });

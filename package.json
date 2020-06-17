@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/speedingplanet/mathworks-js#readme",
   "dependencies": {
-    "@speedingplanet/rest-server": "0.0.5",
+    "@speedingplanet/rest-server": "0.0.6",
     "bootstrap": "^4.5.0",
     "lodash": "^4.17.15",
     "lodash-es": "^4.17.15"

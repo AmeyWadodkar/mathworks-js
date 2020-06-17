@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign-in sheet</title>
+  </head>
+  <body>
+    <h1>Sign-in sheet</h1>
+    <h2>Please sign in below:</h2>
+
+    <section id="form-container">
+      <form>
+        <label for="student-name">Your name: </label>
+        <input type="text" id="student-name" /> <br />
+        <button type="button" id="sign-in-button">Sign in</button>
+      </form>
+    </section>
+    <section id="sign-in-container">
+      <h3>Students</h3>
+      <ul id="students"></ul>
+    </section>
+
+    <script>
+      /*
+        How do I get a reference to an element or elements?
+        document.getElementById(id)
+        document.getElementsByTagName(tagName) / element.getElementsByTagName()
+        document.getElementsByClassName(CSSclassName) / element.getElementsByClassName()
+        document.querySelector(cssSelector) & document.querySelectorAll(cssSelector) (can be called on element as well)
+      */
+
+      const button = document.getElementById('sign-in-button');
+      const textField = document.getElementById('student-name');
+      const studentList = document.getElementById('students');
+
+      // Property-based event handling
+      // button.onclick = (event) => {}
+
+      button.addEventListener('click', (event) => {
+        let studentName = textField.value;
+
+
+        // Most backwards-compatible
+        // const item = document.createElement('li');
+        // const textNode = document.createTextNode(studentName);
+        // item.appendChild(textNode);        
+        // studentList.appendChild(item);
+
+        // studentList.innerHTML = studentList.innerHTML + `<li>${studentName}</li>`;
+
+        // Least backwards-compatible, more efficient, often easier
+        studentList.insertAdjacentHTML('beforeend', `<li>${studentName}</li>`);
+        // const item2 = document.createElement('li');
+        // item2.textContent = studentName
+        // studentList.append(item2);
+        // OR
+        // studentList.insertAdjacentElement('beforeend', item2);
+      });
+    </script>
+  </body>
+</html>

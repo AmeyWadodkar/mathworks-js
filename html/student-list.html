@@ -26,12 +26,35 @@
       const textField = document.getElementById('student-name');
       const studentList = document.getElementById('students');
 
+      const students = [];
+      // button.addEventListener('click', (event) => {
+      button.addEventListener('click', function (event) {
+        if (!textField.value) return false;
+        students.push(textField.value);
+        textField.value = '';
+        students.sort();
+
+        // const studentListItems = students.map((student) => {
+        const studentListItems = students.map(function (student) {
+          const listItem = document.createElement('li');
+          listItem.textContent = student;
+          return listItem;
+        });
+
+        studentList.innerHTML = '';
+        studentList.append(...studentListItems);
+      });
+
+      /*
       button.addEventListener('click', (event) => {
+        if (!textField.value) return false;
         let studentName = textField.value;
+        textField.value = '';
         const item2 = document.createElement('li');
         item2.textContent = studentName;
         studentList.append(item2); // afterbegin
       });
+      */
     </script>
   </body>
 </html>
